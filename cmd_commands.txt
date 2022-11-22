@@ -1,0 +1,27 @@
+[cloudera@quickstart ~]$ hadoop fs -put -p  /home/cloudera/Desktop/wip/ /user/cloudera/wip
+[cloudera@quickstart ~]$ hadoop fs -ls -h /user/cloudera/wip
+Found 4 items
+-rw-rw-rw-   1 cloudera cloudera      1.2 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-1.txt
+-rw-rw-rw-   1 cloudera cloudera      1.3 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-2.txt
+-rw-rw-rw-   1 cloudera cloudera      1.4 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-3.txt
+-rw-rw-rw-   1 cloudera cloudera      1.2 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-4.txt
+[cloudera@quickstart ~]$ hadoop fs -cat /user/cloudera/wip/* | hadoop fs -put - /user/cloudera/wip/voyna-i-mir.txt
+[cloudera@quickstart ~]$ hadoop fs -chmod 755 /user/cloudera/wip/voyna-i-mir.txt
+[cloudera@quickstart ~]$ hadoop fs -ls -h /user/cloudera/wipFound 5 items
+-rw-rw-rw-   1 cloudera cloudera      1.2 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-1.txt
+-rw-rw-rw-   1 cloudera cloudera      1.3 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-2.txt
+-rw-rw-rw-   1 cloudera cloudera      1.4 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-3.txt
+-rw-rw-rw-   1 cloudera cloudera      1.2 M 2022-11-22 14:10 /user/cloudera/wip/voyna-i-mir-tom-4.txt
+-rwxr-xr-x   1 cloudera cloudera      5.1 M 2022-11-22 14:48 /user/cloudera/wip/voyna-i-mir.txt
+[cloudera@quickstart ~]$ hadoop fs -du -h /user/cloudera/wip/voyna-i-mir.txt
+5.1 M  5.1 M  /user/cloudera/wip/voyna-i-mir.txt
+[cloudera@quickstart ~]$ hadoop fs -setrep 2 /user/cloudera/wip/
+Replication 2 set: /user/cloudera/wip/voyna-i-mir-tom-1.txt
+Replication 2 set: /user/cloudera/wip/voyna-i-mir-tom-2.txt
+Replication 2 set: /user/cloudera/wip/voyna-i-mir-tom-3.txt
+Replication 2 set: /user/cloudera/wip/voyna-i-mir-tom-4.txt
+Replication 2 set: /user/cloudera/wip/voyna-i-mir.txt
+[cloudera@quickstart ~]$ hadoop fs -du -h /user/cloudera/wip/voyna-i-mir.txt
+5.1 M  10.2 M  /user/cloudera/wip/voyna-i-mir.txt
+[cloudera@quickstart ~]$ hadoop fs -cat /user/cloudera/wip/voyna-i-mir.txt | wc -l
+10272
